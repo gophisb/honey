@@ -1,0 +1,21 @@
+{
+  "name": "HOUD HONEY | عسل هود",
+  "short_name": "HOUD HONEY",
+  "description": "عسل هود الفاخر - عسل مختلف الأزهار وعسل الجبلي الفاخر مع توصيل مجاني إلى جميع ولايات الجزائر",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#080808",
+  "theme_color": "#080808",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
