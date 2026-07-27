@@ -1,221 +1,620 @@
-// ============================
+// ==================================================
 // HOUD HONEY - Main JavaScript
-// ============================
+// ==================================================
 
 (function () {
-  'use strict';
+  "use strict";
 
-  // ---------- DOM Elements ----------
-  const langToggle = document.getElementById('languageToggle');
+  // ==================================================
+  // DOM ELEMENTS
+  // ==================================================
+
+  const langToggle = document.getElementById("languageToggle");
   const html = document.documentElement;
 
   // Product / Size / Quantity
-  const productRadios = document.getElementsByName('product');
-  const sizeRadios = document.getElementsByName('size');
-  const decreaseBtn = document.getElementById('decreaseQuantity');
-  const increaseBtn = document.getElementById('increaseQuantity');
-  const quantityDisplay = document.getElementById('quantityDisplay');
+  const productRadios = document.querySelectorAll('input[name="product"]');
+  const sizeRadios = document.querySelectorAll('input[name="size"]');
+
+  const decreaseBtn = document.getElementById("decreaseQuantity");
+  const increaseBtn = document.getElementById("increaseQuantity");
+  const quantityDisplay = document.getElementById("quantityDisplay");
 
   // Summary
-  const summaryProduct = document.getElementById('summaryProduct');
-  const summarySize = document.getElementById('summarySize');
-  const summaryQuantity = document.getElementById('summaryQuantity');
-  const totalPrice = document.getElementById('totalPrice');
+  const summaryProduct = document.getElementById("summaryProduct");
+  const summarySize = document.getElementById("summarySize");
+  const summaryQuantity = document.getElementById("summaryQuantity");
+  const totalPrice = document.getElementById("totalPrice");
 
   // Form
-  const orderForm = document.getElementById('orderForm');
-  const customerName = document.getElementById('customerName');
-  const wilaya = document.getElementById('wilaya');
-  const customerAddress = document.getElementById('customerAddress');
-  const customerPhone = document.getElementById('customerPhone');
+  const orderForm = document.getElementById("orderForm");
+  const customerName = document.getElementById("customerName");
+  const wilaya = document.getElementById("wilaya");
+  const customerAddress = document.getElementById("customerAddress");
+  const customerPhone = document.getElementById("customerPhone");
 
   // Footer
-  const currentYearSpan = document.getElementById('currentYear');
+  const currentYearSpan = document.getElementById("currentYear");
 
-  // ---------- State ----------
+
+  // ==================================================
+  // STATE
+  // ==================================================
+
   let quantity = 1;
-  let currentLang = 'ar'; // default Arabic
+  let currentLang = "ar";
 
-  // ---------- Helpers ----------
-  const getSelectedProduct = () => {
-    for (const radio of productRadios) {
-      if (radio.checked) return radio.value;
+
+  // ==================================================
+  // PRODUCT DATA
+  // ==================================================
+
+  const products = {
+    flower: {
+      ar: "عسل مختلف الأزهار",
+      en: "All Blossoms Honey"
+    },
+
+    mountain: {
+      ar: "عسل الجبلي الفاخر",
+      en: "Luxury Mountain Honey"
     }
-    return 'flower';
   };
 
-  const getSelectedSize = () => {
-    for (const radio of sizeRadios) {
-      if (radio.checked) return radio.value;
-    }
-    return '1kg';
-  };
 
-  const getPrice = (product, size) => {
-    // Base price 4500 DZD for 1kg
-    if (size === '500g') return 2250;
+  // ==================================================
+  // GET SELECTED PRODUCT
+  // ==================================================
+
+  function getSelectedProduct() {
+    const selected = document.querySelector(
+      'input[name="product"]:checked'
+    );
+
+    return selected ? selected.value : "flower";
+  }
+
+
+  // ==================================================
+  // GET SELECTED SIZE
+  // ==================================================
+
+  function getSelectedSize() {
+    const selected = document.querySelector(
+      'input[name="size"]:checked'
+    );
+
+    return selected ? selected.value : "1kg";
+  }
+
+
+  // ==================================================
+  // GET UNIT PRICE
+  // ==================================================
+
+  function getUnitPrice(size) {
+
+    // 1 KG = 4500 DZD
+    if (size === "1kg") {
+      return 4500;
+    }
+
+    // 500 G = Half Price
+    if (size === "500g") {
+      return 2250;
+    }
+
     return 4500;
-  };
+  }
 
-  const formatPrice = (price) => {
-    return price.toLocaleString('ar-DZ') + ' دج';
-  };
 
-  const updateSummary = () => {
-    const productValue = getSelectedProduct();
-    const sizeValue = getSelectedSize();
+  // ==================================================
+  // GET TOTAL PRICE
+  // ==================================================
 
-    // Product name
-    const productName =
-      productValue === 'flower' ? 'عسل مختلف الأزهار' : 'عسل الجبلي الفاخر';
-    summaryProduct.textContent = productName;
+  function calculateTotal(size, qty) {
 
-    // Size
-    const sizeText = sizeValue === '1kg' ? '1 كغ' : '500 غ';
-    summarySize.textContent = sizeText;
-
-    // Quantity
-    summaryQuantity.textContent = quantity;
-
-    // Total price
-    const unitPrice = getPrice(productValue, sizeValue);
-    const total = unitPrice * quantity;
-    totalPrice.textContent = formatPrice(total);
-  };
-
-  // ---------- Event Listeners ----------
-
-  // Product change
-  productRadios.forEach((radio) => {
-    radio.addEventListener('change', updateSummary);
-  });
-
-  // Size change
-  sizeRadios.forEach((radio) => {
-    radio.addEventListener('change', updateSummary);
-  });
-
-  // Quantity
-  decreaseBtn.addEventListener('click', () => {
-    if (quantity > 1) {
-      quantity--;
-      quantityDisplay.textContent = quantity;
-      updateSummary();
+    // SPECIAL OFFER
+    // 3 jars of 1 KG = 12000 DZD
+    if (size === "1kg" && qty === 3) {
+      return 12000;
     }
-  });
 
-  increaseBtn.addEventListener('click', () => {
-    quantity++;
-    quantityDisplay.textContent = quantity;
-    updateSummary();
-  });
+    // Normal calculation
+    return getUnitPrice(size) * qty;
+  }
 
-  // Form submit → WhatsApp
-  orderForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+
+  // ==================================================
+  // FORMAT PRICE
+  // ==================================================
+
+  function formatPrice(price) {
+
+    return (
+      price.toLocaleString(
+        currentLang === "ar" ? "ar-DZ" : "en-US"
+      ) +
+      (currentLang === "ar" ? " دج" : " DZD")
+    );
+
+  }
+
+
+  // ==================================================
+  // UPDATE ORDER SUMMARY
+  // ==================================================
+
+  function updateSummary() {
 
     const product = getSelectedProduct();
     const size = getSelectedSize();
-    const unitPrice = getPrice(product, size);
-    const total = unitPrice * quantity;
 
-    const productName =
-      product === 'flower' ? 'عسل مختلف الأزهار' : 'عسل الجبلي الفاخر';
-    const sizeLabel = size === '1kg' ? '1 كيلوغرام' : '500 غرام';
+    // Product name
+    if (summaryProduct) {
 
-    // Build message in Arabic (default)
-    const message = `
-مرحباً، أود طلب المنتج التالي:
-- المنتج: ${productName}
-- الحجم: ${sizeLabel}
-- الكمية: ${quantity}
-- السعر الإجمالي: ${formatPrice(total)}
+      summaryProduct.textContent =
+        products[product][currentLang];
 
-معلومات التوصيل:
-- الاسم: ${customerName.value.trim()}
-- الولاية: ${wilaya.value}
-- العنوان: ${customerAddress.value.trim()}
-- رقم الهاتف: ${customerPhone.value.trim()}
-
-شكراً!
-    `.trim();
-
-    const encoded = encodeURIComponent(message);
-    const phone = '213663561135';
-    const whatsappURL = `https://wa.me/${phone}?text=${encoded}`;
-
-    window.open(whatsappURL, '_blank');
-  });
-
-  // ---------- Language Toggle ----------
-  const updateLanguageUI = (lang) => {
-    // Update HTML dir and lang
-    html.setAttribute('lang', lang === 'ar' ? 'ar' : 'en');
-    html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-
-    // Toggle button text
-    langToggle.textContent = lang === 'ar' ? 'EN' : 'AR';
-
-    // Update all elements with data-ar / data-en
-    document.querySelectorAll('[data-ar]').forEach((el) => {
-      const text = lang === 'ar' ? el.getAttribute('data-ar') : el.getAttribute('data-en');
-      if (text !== null) {
-        // For elements that may contain other children (like buttons with spans),
-        // we set textContent only if the element's direct text is the one to change.
-        // More robust: only change if the element's child is a text node or we just set textContent.
-        // We'll set textContent carefully.
-        el.textContent = text;
-      }
-    });
-
-    // Restore quantity display (it's a number, not translated)
-    quantityDisplay.textContent = quantity;
-    // Update summary (names and prices are in Arabic numbers anyway)
-    updateSummary();
-
-    // Re-apply special button content (WhatsApp button has two spans)
-    const whatsappBtn = document.querySelector('.btn-whatsapp');
-    if (whatsappBtn) {
-      // The button has two spans: first is emoji, second is text
-      const spans = whatsappBtn.querySelectorAll('span');
-      if (spans.length >= 2) {
-        const textSpan = spans[1];
-        const text = lang === 'ar' ? 'إرسال الطلب عبر واتساب' : 'Send Order via WhatsApp';
-        textSpan.textContent = text;
-      }
     }
-  };
 
-  langToggle.addEventListener('click', () => {
-    currentLang = currentLang === 'ar' ? 'en' : 'ar';
-    updateLanguageUI(currentLang);
-  });
 
-  // ---------- Footer Year ----------
-  if (currentYearSpan) {
-    currentYearSpan.textContent = new Date().getFullYear();
+    // Size
+    if (summarySize) {
+
+      if (size === "1kg") {
+
+        summarySize.textContent =
+          currentLang === "ar"
+            ? "1 كغ"
+            : "1 KG";
+
+      } else {
+
+        summarySize.textContent =
+          currentLang === "ar"
+            ? "500 غ"
+            : "500 G";
+
+      }
+
+    }
+
+
+    // Quantity
+    if (summaryQuantity) {
+
+      summaryQuantity.textContent = quantity;
+
+    }
+
+
+    // Total
+    const total = calculateTotal(
+      size,
+      quantity
+    );
+
+    if (totalPrice) {
+
+      totalPrice.textContent =
+        formatPrice(total);
+
+    }
+
   }
 
-  // ---------- Initialize ----------
-  updateSummary();
-  // Set initial language to Arabic (already default)
-  updateLanguageUI('ar');
 
-  // Also update product selection from "Choose this honey" buttons (if used)
-  document.querySelectorAll('.select-product').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const product = btn.getAttribute('data-product');
-      if (product) {
-        // Check corresponding radio
-        const radio = document.querySelector(`input[name="product"][value="${product}"]`);
-        if (radio) {
-          radio.checked = true;
+  // ==================================================
+  // QUANTITY - DECREASE
+  // ==================================================
+
+  if (decreaseBtn) {
+
+    decreaseBtn.addEventListener(
+      "click",
+      function () {
+
+        if (quantity > 1) {
+
+          quantity--;
+
+          quantityDisplay.textContent =
+            quantity;
+
           updateSummary();
+
         }
-        // Scroll to order section
-        document.getElementById('order').scrollIntoView({ behavior: 'smooth' });
+
       }
-    });
-  });
+    );
+
+  }
+
+
+  // ==================================================
+  // QUANTITY - INCREASE
+  // ==================================================
+
+  if (increaseBtn) {
+
+    increaseBtn.addEventListener(
+      "click",
+      function () {
+
+        quantity++;
+
+        quantityDisplay.textContent =
+          quantity;
+
+        updateSummary();
+
+      }
+    );
+
+  }
+
+
+  // ==================================================
+  // PRODUCT CHANGE
+  // ==================================================
+
+  productRadios.forEach(
+    function (radio) {
+
+      radio.addEventListener(
+        "change",
+        updateSummary
+      );
+
+    }
+  );
+
+
+  // ==================================================
+  // SIZE CHANGE
+  // ==================================================
+
+  sizeRadios.forEach(
+    function (radio) {
+
+      radio.addEventListener(
+        "change",
+        updateSummary
+      );
+
+    }
+  );
+
+
+  // ==================================================
+  // LANGUAGE SYSTEM
+  // ==================================================
+
+  function updateLanguageUI(lang) {
+
+    currentLang = lang;
+
+    // HTML language
+    html.setAttribute(
+      "lang",
+      lang === "ar"
+        ? "ar"
+        : "en"
+    );
+
+    // Direction
+    html.setAttribute(
+      "dir",
+      lang === "ar"
+        ? "rtl"
+        : "ltr"
+    );
+
+
+    // Language button
+    if (langToggle) {
+
+      langToggle.textContent =
+        lang === "ar"
+          ? "EN"
+          : "AR";
+
+    }
+
+
+    // Translate elements
+    document
+      .querySelectorAll(
+        "[data-ar][data-en]"
+      )
+      .forEach(
+        function (element) {
+
+          const text =
+            lang === "ar"
+              ? element.getAttribute("data-ar")
+              : element.getAttribute("data-en");
+
+          if (text !== null) {
+
+            element.textContent =
+              text;
+
+          }
+
+        }
+      );
+
+
+    // Restore quantity
+    if (quantityDisplay) {
+
+      quantityDisplay.textContent =
+        quantity;
+
+    }
+
+
+    // Update summary
+    updateSummary();
+
+  }
+
+
+  // ==================================================
+  // LANGUAGE TOGGLE
+  // ==================================================
+
+  if (langToggle) {
+
+    langToggle.addEventListener(
+      "click",
+      function () {
+
+        const newLang =
+          currentLang === "ar"
+            ? "en"
+            : "ar";
+
+        updateLanguageUI(
+          newLang
+        );
+
+      }
+    );
+
+  }
+
+
+  // ==================================================
+  // ORDER FORM → WHATSAPP
+  // ==================================================
+
+  if (orderForm) {
+
+    orderForm.addEventListener(
+      "submit",
+      function (event) {
+
+        event.preventDefault();
+
+
+        // Get data
+        const product =
+          getSelectedProduct();
+
+        const size =
+          getSelectedSize();
+
+        const total =
+          calculateTotal(
+            size,
+            quantity
+          );
+
+
+        // Product name
+        const productName =
+          products[product][currentLang];
+
+
+        // Size name
+        const sizeLabel =
+          size === "1kg"
+            ? (
+                currentLang === "ar"
+                  ? "1 كيلوغرام"
+                  : "1 KG"
+              )
+            : (
+                currentLang === "ar"
+                  ? "500 غرام"
+                  : "500 G"
+              );
+
+
+        // Special offer text
+        let offerText = "";
+
+        if (
+          size === "1kg" &&
+          quantity === 3
+        ) {
+
+          offerText =
+            currentLang === "ar"
+              ? "\n🎁 العرض الخاص: 3 عبوات 1 كغ بسعر 12000 دج"
+              : "\n🎁 Special Offer: 3 x 1 KG jars for 12000 DZD";
+
+        }
+
+
+        // WhatsApp message
+        let message;
+
+
+        if (currentLang === "ar") {
+
+          message = `
+مرحباً HOUD HONEY 🍯
+
+أرغب في طلب:
+
+🍯 المنتج: ${productName}
+⚖️ الحجم: ${sizeLabel}
+📦 عدد العبوات: ${quantity}
+💰 المجموع: ${formatPrice(total)}
+🚚 التوصيل: مجاني
+${offerText}
+
+👤 معلومات الزبون:
+
+الاسم: ${customerName.value.trim()}
+الولاية: ${wilaya.value}
+العنوان: ${customerAddress.value.trim()}
+الهاتف: ${customerPhone.value.trim()}
+
+شكراً لكم 🌟
+          `.trim();
+
+        } else {
+
+          message = `
+Hello HOUD HONEY 🍯
+
+I would like to order:
+
+🍯 Product: ${productName}
+⚖️ Size: ${sizeLabel}
+📦 Quantity: ${quantity}
+💰 Total: ${formatPrice(total)}
+🚚 Delivery: FREE
+${offerText}
+
+👤 Customer Information:
+
+Name: ${customerName.value.trim()}
+Wilaya: ${wilaya.value}
+Address: ${customerAddress.value.trim()}
+Phone: ${customerPhone.value.trim()}
+
+Thank you 🌟
+          `.trim();
+
+        }
+
+
+        // WhatsApp Number
+        const phone =
+          "213663561135";
+
+
+        // Encode message
+        const encodedMessage =
+          encodeURIComponent(
+            message
+          );
+
+
+        // WhatsApp URL
+        const whatsappURL =
+          `https://wa.me/${phone}?text=${encodedMessage}`;
+
+
+        // Open WhatsApp
+        window.open(
+          whatsappURL,
+          "_blank",
+          "noopener,noreferrer"
+        );
+
+      }
+    );
+
+  }
+
+
+  // ==================================================
+  // PRODUCT SELECTION BUTTONS
+  // ==================================================
+
+  document
+    .querySelectorAll(
+      ".select-product"
+    )
+    .forEach(
+      function (button) {
+
+        button.addEventListener(
+          "click",
+          function () {
+
+            const product =
+              button.getAttribute(
+                "data-product"
+              );
+
+
+            if (product) {
+
+              const radio =
+                document.querySelector(
+                  `input[name="product"][value="${product}"]`
+                );
+
+
+              if (radio) {
+
+                radio.checked =
+                  true;
+
+                updateSummary();
+
+              }
+
+            }
+
+
+            const orderSection =
+              document.getElementById(
+                "order"
+              );
+
+
+            if (orderSection) {
+
+              orderSection.scrollIntoView(
+                {
+                  behavior: "smooth"
+                }
+              );
+
+            }
+
+          }
+        );
+
+      }
+    );
+
+
+  // ==================================================
+  // FOOTER YEAR
+  // ==================================================
+
+  if (currentYearSpan) {
+
+    currentYearSpan.textContent =
+      new Date().getFullYear();
+
+  }
+
+
+  // ==================================================
+  // INITIALIZE
+  // ==================================================
+
+  updateLanguageUI("ar");
 
 })();
