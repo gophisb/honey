@@ -1,219 +1,201 @@
-// ==================================================
+// ============================
 // HOUD HONEY - Main JavaScript
-// ==================================================
+// ============================
 
 (function () {
-  "use strict";
+  'use strict';
 
-  // ==================================================
-  // DOM ELEMENTS
-  // ==================================================
-
-  const langToggle = document.getElementById("languageToggle");
+  const langToggle = document.getElementById('languageToggle');
   const html = document.documentElement;
 
-  // Product / Size / Quantity
-  const productRadios = document.querySelectorAll('input[name="product"]');
-  const sizeRadios = document.querySelectorAll('input[name="size"]');
+  const productRadios = document.getElementsByName('product');
+  const sizeRadios = document.getElementsByName('size');
 
-  const decreaseBtn = document.getElementById("decreaseQuantity");
-  const increaseBtn = document.getElementById("increaseQuantity");
-  const quantityDisplay = document.getElementById("quantityDisplay");
+  const decreaseBtn = document.getElementById('decreaseQuantity');
+  const increaseBtn = document.getElementById('increaseQuantity');
+  const quantityDisplay = document.getElementById('quantityDisplay');
 
-  // Summary
-  const summaryProduct = document.getElementById("summaryProduct");
-  const summarySize = document.getElementById("summarySize");
-  const summaryQuantity = document.getElementById("summaryQuantity");
-  const totalPrice = document.getElementById("totalPrice");
+  const summaryProduct = document.getElementById('summaryProduct');
+  const summarySize = document.getElementById('summarySize');
+  const summaryQuantity = document.getElementById('summaryQuantity');
+  const totalPrice = document.getElementById('totalPrice');
 
-  // Form
-  const orderForm = document.getElementById("orderForm");
-  const customerName = document.getElementById("customerName");
-  const wilaya = document.getElementById("wilaya");
-  const customerAddress = document.getElementById("customerAddress");
-  const customerPhone = document.getElementById("customerPhone");
+  const orderForm = document.getElementById('orderForm');
+  const customerName = document.getElementById('customerName');
+  const wilaya = document.getElementById('wilaya');
+  const customerAddress = document.getElementById('customerAddress');
+  const customerPhone = document.getElementById('customerPhone');
 
-  // Footer
-  const currentYearSpan = document.getElementById("currentYear");
+  const currentYearSpan = document.getElementById('currentYear');
 
-
-  // ==================================================
+  // ============================
   // STATE
-  // ==================================================
+  // ============================
 
   let quantity = 1;
-  let currentLang = "ar";
+  let currentLang = 'ar';
 
-
-  // ==================================================
+  // ============================
   // PRODUCT DATA
-  // ==================================================
+  // ============================
 
   const products = {
     flower: {
-      ar: "عسل مختلف الأزهار",
-      en: "All Blossoms Honey"
+      ar: 'عسل مختلف الأزهار',
+      en: 'All Blossoms Honey'
     },
-
     mountain: {
-      ar: "عسل الجبلي الفاخر",
-      en: "Luxury Mountain Honey"
+      ar: 'عسل الجبلي الفاخر',
+      en: 'Luxury Mountain Honey'
     }
   };
 
-
-  // ==================================================
+  // ============================
   // GET SELECTED PRODUCT
-  // ==================================================
+  // ============================
 
   function getSelectedProduct() {
-    const selected = document.querySelector(
-      'input[name="product"]:checked'
-    );
+    for (const radio of productRadios) {
+      if (radio.checked) {
+        return radio.value;
+      }
+    }
 
-    return selected ? selected.value : "flower";
+    return 'flower';
   }
 
-
-  // ==================================================
+  // ============================
   // GET SELECTED SIZE
-  // ==================================================
+  // ============================
 
   function getSelectedSize() {
-    const selected = document.querySelector(
-      'input[name="size"]:checked'
-    );
+    for (const radio of sizeRadios) {
+      if (radio.checked) {
+        return radio.value;
+      }
+    }
 
-    return selected ? selected.value : "1kg";
+    return '1kg';
   }
 
+  // ============================
+  // GET PRICE
+  // ============================
 
-  // ==================================================
-  // GET UNIT PRICE
-  // ==================================================
-
-  function getUnitPrice(size) {
+  function getPrice(size) {
 
     // 1 KG = 4500 DZD
-    if (size === "1kg") {
+    if (size === '1kg') {
       return 4500;
     }
 
-    // 500 G = Half Price
-    if (size === "500g") {
+    // 500 G = نصف سعر 1 KG
+    if (size === '500g') {
       return 2250;
     }
 
     return 4500;
   }
 
+  // ============================
+  // CALCULATE TOTAL
+  // ============================
 
-  // ==================================================
-  // GET TOTAL PRICE
-  // ==================================================
-
-  function calculateTotal(size, qty) {
+  function calculateTotal(size, quantity) {
 
     // SPECIAL OFFER
-    // 3 jars of 1 KG = 12000 DZD
-    if (size === "1kg" && qty === 3) {
+    // 3 x 1 KG = 12000 DZD
+    if (size === '1kg' && quantity === 3) {
       return 12000;
     }
 
-    // Normal calculation
-    return getUnitPrice(size) * qty;
+    const unitPrice = getPrice(size);
+
+    return unitPrice * quantity;
   }
 
-
-  // ==================================================
+  // ============================
   // FORMAT PRICE
-  // ==================================================
+  // ============================
 
   function formatPrice(price) {
 
-    return (
-      price.toLocaleString(
-        currentLang === "ar" ? "ar-DZ" : "en-US"
-      ) +
-      (currentLang === "ar" ? " دج" : " DZD")
-    );
+    return price.toLocaleString('ar-DZ') + ' دج';
 
   }
 
-
-  // ==================================================
+  // ============================
   // UPDATE ORDER SUMMARY
-  // ==================================================
+  // ============================
 
   function updateSummary() {
 
-    const product = getSelectedProduct();
-    const size = getSelectedSize();
+    const productValue = getSelectedProduct();
+    const sizeValue = getSelectedSize();
 
-    // Product name
-    if (summaryProduct) {
+    const productName =
+      currentLang === 'ar'
+        ? products[productValue].ar
+        : products[productValue].en;
 
-      summaryProduct.textContent =
-        products[product][currentLang];
+    const sizeText =
+      currentLang === 'ar'
+        ? (sizeValue === '1kg' ? '1 كغ' : '500 غ')
+        : (sizeValue === '1kg' ? '1 KG' : '500 G');
 
-    }
-
-
-    // Size
-    if (summarySize) {
-
-      if (size === "1kg") {
-
-        summarySize.textContent =
-          currentLang === "ar"
-            ? "1 كغ"
-            : "1 KG";
-
-      } else {
-
-        summarySize.textContent =
-          currentLang === "ar"
-            ? "500 غ"
-            : "500 G";
-
-      }
-
-    }
-
-
-    // Quantity
-    if (summaryQuantity) {
-
-      summaryQuantity.textContent = quantity;
-
-    }
-
-
-    // Total
     const total = calculateTotal(
-      size,
+      sizeValue,
       quantity
     );
 
-    if (totalPrice) {
+    summaryProduct.textContent = productName;
 
-      totalPrice.textContent =
-        formatPrice(total);
+    summarySize.textContent = sizeText;
 
-    }
+    summaryQuantity.textContent = quantity;
+
+    totalPrice.textContent =
+      currentLang === 'ar'
+        ? formatPrice(total)
+        : total.toLocaleString('en-US') + ' DZD';
 
   }
 
+  // ============================
+  // PRODUCT CHANGE
+  // ============================
 
-  // ==================================================
-  // QUANTITY - DECREASE
-  // ==================================================
+  productRadios.forEach((radio) => {
+
+    radio.addEventListener(
+      'change',
+      updateSummary
+    );
+
+  });
+
+  // ============================
+  // SIZE CHANGE
+  // ============================
+
+  sizeRadios.forEach((radio) => {
+
+    radio.addEventListener(
+      'change',
+      updateSummary
+    );
+
+  });
+
+  // ============================
+  // DECREASE QUANTITY
+  // ============================
 
   if (decreaseBtn) {
 
     decreaseBtn.addEventListener(
-      "click",
-      function () {
+      'click',
+      () => {
 
         if (quantity > 1) {
 
@@ -231,16 +213,15 @@
 
   }
 
-
-  // ==================================================
-  // QUANTITY - INCREASE
-  // ==================================================
+  // ============================
+  // INCREASE QUANTITY
+  // ============================
 
   if (increaseBtn) {
 
     increaseBtn.addEventListener(
-      "click",
-      function () {
+      'click',
+      () => {
 
         quantity++;
 
@@ -254,153 +235,18 @@
 
   }
 
-
-  // ==================================================
-  // PRODUCT CHANGE
-  // ==================================================
-
-  productRadios.forEach(
-    function (radio) {
-
-      radio.addEventListener(
-        "change",
-        updateSummary
-      );
-
-    }
-  );
-
-
-  // ==================================================
-  // SIZE CHANGE
-  // ==================================================
-
-  sizeRadios.forEach(
-    function (radio) {
-
-      radio.addEventListener(
-        "change",
-        updateSummary
-      );
-
-    }
-  );
-
-
-  // ==================================================
-  // LANGUAGE SYSTEM
-  // ==================================================
-
-  function updateLanguageUI(lang) {
-
-    currentLang = lang;
-
-    // HTML language
-    html.setAttribute(
-      "lang",
-      lang === "ar"
-        ? "ar"
-        : "en"
-    );
-
-    // Direction
-    html.setAttribute(
-      "dir",
-      lang === "ar"
-        ? "rtl"
-        : "ltr"
-    );
-
-
-    // Language button
-    if (langToggle) {
-
-      langToggle.textContent =
-        lang === "ar"
-          ? "EN"
-          : "AR";
-
-    }
-
-
-    // Translate elements
-    document
-      .querySelectorAll(
-        "[data-ar][data-en]"
-      )
-      .forEach(
-        function (element) {
-
-          const text =
-            lang === "ar"
-              ? element.getAttribute("data-ar")
-              : element.getAttribute("data-en");
-
-          if (text !== null) {
-
-            element.textContent =
-              text;
-
-          }
-
-        }
-      );
-
-
-    // Restore quantity
-    if (quantityDisplay) {
-
-      quantityDisplay.textContent =
-        quantity;
-
-    }
-
-
-    // Update summary
-    updateSummary();
-
-  }
-
-
-  // ==================================================
-  // LANGUAGE TOGGLE
-  // ==================================================
-
-  if (langToggle) {
-
-    langToggle.addEventListener(
-      "click",
-      function () {
-
-        const newLang =
-          currentLang === "ar"
-            ? "en"
-            : "ar";
-
-        updateLanguageUI(
-          newLang
-        );
-
-      }
-    );
-
-  }
-
-
-  // ==================================================
-  // ORDER FORM → WHATSAPP
-  // ==================================================
+  // ============================
+  // WHATSAPP ORDER
+  // ============================
 
   if (orderForm) {
 
     orderForm.addEventListener(
-      "submit",
-      function (event) {
+      'submit',
+      (event) => {
 
         event.preventDefault();
 
-
-        // Get data
         const product =
           getSelectedProduct();
 
@@ -413,69 +259,59 @@
             quantity
           );
 
-
-        // Product name
         const productName =
-          products[product][currentLang];
+          currentLang === 'ar'
+            ? products[product].ar
+            : products[product].en;
 
-
-        // Size name
         const sizeLabel =
-          size === "1kg"
-            ? (
-                currentLang === "ar"
-                  ? "1 كيلوغرام"
-                  : "1 KG"
-              )
-            : (
-                currentLang === "ar"
-                  ? "500 غرام"
-                  : "500 G"
-              );
+          currentLang === 'ar'
+            ? (size === '1kg'
+                ? '1 كيلوغرام'
+                : '500 غرام')
+            : (size === '1kg'
+                ? '1 KG'
+                : '500 G');
 
-
-        // Special offer text
-        let offerText = "";
-
-        if (
-          size === "1kg" &&
-          quantity === 3
-        ) {
-
-          offerText =
-            currentLang === "ar"
-              ? "\n🎁 العرض الخاص: 3 عبوات 1 كغ بسعر 12000 دج"
-              : "\n🎁 Special Offer: 3 x 1 KG jars for 12000 DZD";
-
-        }
-
-
-        // WhatsApp message
         let message;
 
-
-        if (currentLang === "ar") {
+        if (currentLang === 'ar') {
 
           message = `
 مرحباً HOUD HONEY 🍯
 
-أرغب في طلب:
+أرغب في تأكيد طلبي:
 
-🍯 المنتج: ${productName}
-⚖️ الحجم: ${sizeLabel}
-📦 عدد العبوات: ${quantity}
-💰 المجموع: ${formatPrice(total)}
-🚚 التوصيل: مجاني
-${offerText}
+🍯 المنتج:
+${productName}
+
+📦 الحجم:
+${sizeLabel}
+
+🔢 عدد العبوات:
+${quantity}
+
+💰 السعر الإجمالي:
+${formatPrice(total)}
+
+🚚 التوصيل:
+مجاني
 
 👤 معلومات الزبون:
 
-الاسم: ${customerName.value.trim()}
-الولاية: ${wilaya.value}
-العنوان: ${customerAddress.value.trim()}
-الهاتف: ${customerPhone.value.trim()}
+الاسم:
+${customerName.value.trim()}
 
-شكراً لكم 🌟
+الولاية:
+${wilaya.value}
+
+العنوان:
+${customerAddress.value.trim()}
+
+📱 رقم الهاتف:
+${customerPhone.value.trim()}
+
+شكراً لكم.
           `.trim();
 
         } else {
@@ -483,50 +319,56 @@ ${offerText}
           message = `
 Hello HOUD HONEY 🍯
 
-I would like to order:
+I would like to confirm my order:
 
-🍯 Product: ${productName}
-⚖️ Size: ${sizeLabel}
-📦 Quantity: ${quantity}
-💰 Total: ${formatPrice(total)}
-🚚 Delivery: FREE
-${offerText}
+🍯 Product:
+${productName}
+
+📦 Size:
+${sizeLabel}
+
+🔢 Quantity:
+${quantity}
+
+💰 Total Price:
+${total.toLocaleString('en-US')} DZD
+
+🚚 Delivery:
+FREE
 
 👤 Customer Information:
 
-Name: ${customerName.value.trim()}
-Wilaya: ${wilaya.value}
-Address: ${customerAddress.value.trim()}
-Phone: ${customerPhone.value.trim()}
+Name:
+${customerName.value.trim()}
 
-Thank you 🌟
+Wilaya:
+${wilaya.value}
+
+Address:
+${customerAddress.value.trim()}
+
+📱 Phone:
+${customerPhone.value.trim()}
+
+Thank you.
           `.trim();
 
         }
 
-
-        // WhatsApp Number
-        const phone =
-          "213663561135";
-
-
-        // Encode message
         const encodedMessage =
-          encodeURIComponent(
-            message
-          );
+          encodeURIComponent(message);
 
+        // HOUD HONEY WhatsApp
+        const phone =
+          '213663561135';
 
-        // WhatsApp URL
         const whatsappURL =
           `https://wa.me/${phone}?text=${encodedMessage}`;
 
-
-        // Open WhatsApp
         window.open(
           whatsappURL,
-          "_blank",
-          "noopener,noreferrer"
+          '_blank',
+          'noopener,noreferrer'
         );
 
       }
@@ -534,74 +376,161 @@ Thank you 🌟
 
   }
 
+  // ============================
+  // LANGUAGE SYSTEM
+  // ============================
 
-  // ==================================================
-  // PRODUCT SELECTION BUTTONS
-  // ==================================================
+  function updateLanguageUI(lang) {
 
-  document
-    .querySelectorAll(
-      ".select-product"
-    )
-    .forEach(
-      function (button) {
+    currentLang = lang;
 
-        button.addEventListener(
-          "click",
-          function () {
+    html.setAttribute(
+      'lang',
+      lang === 'ar'
+        ? 'ar'
+        : 'en'
+    );
 
-            const product =
-              button.getAttribute(
-                "data-product"
-              );
+    html.setAttribute(
+      'dir',
+      lang === 'ar'
+        ? 'rtl'
+        : 'ltr'
+    );
 
+    if (langToggle) {
 
-            if (product) {
+      langToggle.textContent =
+        lang === 'ar'
+          ? 'EN'
+          : 'AR';
 
-              const radio =
-                document.querySelector(
-                  `input[name="product"][value="${product}"]`
-                );
+    }
 
+    document
+      .querySelectorAll('[data-ar]')
+      .forEach((element) => {
 
-              if (radio) {
+        const text =
+          lang === 'ar'
+            ? element.getAttribute('data-ar')
+            : element.getAttribute('data-en');
 
-                radio.checked =
-                  true;
+        if (text !== null) {
 
-                updateSummary();
+          element.textContent =
+            text;
 
-              }
+        }
 
-            }
+      });
 
+    // Update input placeholders
+    const nameInput =
+      document.getElementById(
+        'customerName'
+      );
 
-            const orderSection =
-              document.getElementById(
-                "order"
-              );
+    const addressInput =
+      document.getElementById(
+        'customerAddress'
+      );
 
+    const phoneInput =
+      document.getElementById(
+        'customerPhone'
+      );
 
-            if (orderSection) {
+    if (nameInput) {
 
-              orderSection.scrollIntoView(
-                {
-                  behavior: "smooth"
-                }
-              );
+      nameInput.placeholder =
+        lang === 'ar'
+          ? 'اكتب اسمك الكامل'
+          : 'Enter your full name';
 
-            }
+    }
 
-          }
+    if (addressInput) {
+
+      addressInput.placeholder =
+        lang === 'ar'
+          ? 'اكتب عنوان التوصيل بالتفصيل'
+          : 'Enter your full delivery address';
+
+    }
+
+    if (phoneInput) {
+
+      phoneInput.placeholder =
+        lang === 'ar'
+          ? '06 XX XX XX XX'
+          : '06 XX XX XX XX';
+
+    }
+
+    // Update quantity
+    if (quantityDisplay) {
+
+      quantityDisplay.textContent =
+        quantity;
+
+    }
+
+    updateSummary();
+
+    // WhatsApp button
+    const whatsappBtn =
+      document.querySelector(
+        '.btn-whatsapp'
+      );
+
+    if (whatsappBtn) {
+
+      const spans =
+        whatsappBtn.querySelectorAll(
+          'span'
+        );
+
+      if (spans.length >= 2) {
+
+        spans[1].textContent =
+          lang === 'ar'
+            ? 'إرسال الطلب عبر واتساب'
+            : 'Send Order via WhatsApp';
+
+      }
+
+    }
+
+  }
+
+  // ============================
+  // LANGUAGE BUTTON
+  // ============================
+
+  if (langToggle) {
+
+    langToggle.addEventListener(
+      'click',
+      () => {
+
+        currentLang =
+          currentLang === 'ar'
+            ? 'en'
+            : 'ar';
+
+        updateLanguageUI(
+          currentLang
         );
 
       }
     );
 
+  }
 
-  // ==================================================
-  // FOOTER YEAR
-  // ==================================================
+  // ============================
+  // CURRENT YEAR
+  // ============================
 
   if (currentYearSpan) {
 
@@ -610,11 +539,65 @@ Thank you 🌟
 
   }
 
+  // ============================
+  // PRODUCT SELECT BUTTONS
+  // ============================
 
-  // ==================================================
+  document
+    .querySelectorAll(
+      '.select-product'
+    )
+    .forEach((button) => {
+
+      button.addEventListener(
+        'click',
+        () => {
+
+          const product =
+            button.getAttribute(
+              'data-product'
+            );
+
+          if (product) {
+
+            const radio =
+              document.querySelector(
+                `input[name="product"][value="${product}"]`
+              );
+
+            if (radio) {
+
+              radio.checked =
+                true;
+
+              updateSummary();
+
+            }
+
+          }
+
+          const orderSection =
+            document.getElementById(
+              'order'
+            );
+
+          if (orderSection) {
+
+            orderSection.scrollIntoView({
+              behavior: 'smooth'
+            });
+
+          }
+
+        }
+      );
+
+    });
+
+  // ============================
   // INITIALIZE
-  // ==================================================
+  // ============================
 
-  updateLanguageUI("ar");
+  updateLanguageUI('ar');
 
 })();
