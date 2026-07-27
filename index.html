@@ -1,1353 +1,1208 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-    <meta name="theme-color" content="#080808">
+  <meta
+    name="theme-color"
+    content="#080808"
+  >
 
-    <meta name="description"
-          content="HOUD HONEY — عسل هود الفاخر. عسل مختلف الأزهار وعسل الجبلي الفاخر. توصيل مجاني إلى جميع الولايات الجزائرية.">
+  <meta
+    name="description"
+    content="HOUD HONEY | عسل هود الفاخر. عسل مختلف الأزهار وعسل الجبلي الفاخر. توصيل مجاني إلى جميع ولايات الجزائر."
+  >
 
-    <title>HOUD HONEY | عسل هود الفاخر</title>
+  <title>HOUD HONEY | عسل هود الفاخر</title>
 
-    <!-- الخطوط -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Montserrat:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
 
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Montserrat:wght@400;500;600;700;800&display=swap"
-          rel="stylesheet">
-
-    <!-- ملف التصميم -->
-    <link rel="stylesheet" href="style.css">
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- ==================================================
-     HEADER
-================================================== -->
-
-<header class="site-header">
-
+  <!-- =========================
+       HEADER
+  ========================== -->
+  <header class="site-header">
     <div class="container header-inner">
 
-        <a href="#home" class="logo">
+      <a href="#home" class="logo" aria-label="HOUD HONEY">
+        <span class="logo-main">HOUD HONEY</span>
+        <span class="logo-sub">عسل هود الفاخر</span>
+      </a>
 
-            <span class="logo-main">
-                HOUD
-            </span>
+      <nav class="main-nav" aria-label="Main Navigation">
+        <a href="#home" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+        <a href="#products" data-ar="منتجاتنا" data-en="Products">منتجاتنا</a>
+        <a href="#why-us" data-ar="لماذا نحن؟" data-en="Why Us">لماذا نحن؟</a>
+        <a href="#order" data-ar="اطلب الآن" data-en="Order Now">اطلب الآن</a>
+      </nav>
 
-            <span class="logo-sub">
-                HONEY
-            </span>
-
-        </a>
-
-        <nav class="main-nav">
-
-            <a href="#products" data-i18n="navProducts">
-                المنتجات
-            </a>
-
-            <a href="#why-us" data-i18n="navWhy">
-                لماذا نحن؟
-            </a>
-
-            <a href="#order" data-i18n="navOrder">
-                اطلب الآن
-            </a>
-
-        </nav>
-
-        <button
-            class="language-btn"
-            id="languageToggle"
-            type="button">
-
-            EN
-
-        </button>
+      <button
+        type="button"
+        class="language-btn"
+        id="languageToggle"
+        aria-label="Change language"
+      >
+        EN
+      </button>
 
     </div>
-
-</header>
-
-
-<!-- ==================================================
-     MAIN
-================================================== -->
-
-<main>
+  </header>
 
 
-<!-- ==================================================
-     HERO SECTION
-================================================== -->
+  <main>
 
-<section class="hero" id="home">
+    <!-- =========================
+         HERO
+    ========================== -->
+    <section class="hero" id="home">
 
-    <div class="hero-glow"></div>
+      <div class="hero-glow"></div>
 
-    <div class="container hero-grid">
-
-
-        <!-- النص -->
+      <div class="container hero-grid">
 
         <div class="hero-content">
 
-            <div class="premium-badge">
+          <span class="premium-badge">
+            ✦
+            <span data-ar="تجربة العسل الفاخر تبدأ من هنا"
+                  data-en="Your premium honey experience starts here">
+              تجربة العسل الفاخر تبدأ من هنا
+            </span>
+          </span>
 
-                <span>✦</span>
-
-                <span data-i18n="premiumBadge">
-                    عسل جزائري فاخر
-                </span>
-
-            </div>
-
-
-            <h1 data-i18n="heroTitle">
-
-                طعم الطبيعة...
-                <br>
-                في كل ملعقة
-
+          <div>
+            <h1>
+              <span data-ar="عسل هود"
+                    data-en="HOUD HONEY">
+                عسل هود
+              </span>
             </h1>
 
+            <div class="hero-title-en">
+              HOUD HONEY
+            </div>
+          </div>
 
-            <p class="hero-title-en">
+          <p class="hero-description"
+             data-ar="مذاق طبيعي فاخر، مختار بعناية ليمنحك لحظة استثنائية مع كل ملعقة."
+             data-en="A luxurious natural taste, carefully selected to give you an exceptional moment with every spoonful.">
+            مذاق طبيعي فاخر، مختار بعناية ليمنحك لحظة استثنائية مع كل ملعقة.
+          </p>
 
-                PURE NATURE.
-                <br>
-                EXCEPTIONAL TASTE.
+          <div class="hero-actions">
 
-            </p>
+            <a
+              href="#order"
+              class="btn btn-primary"
+              data-ar="اطلب عسل هود الآن"
+              data-en="Order HOUD HONEY Now"
+            >
+              اطلب عسل هود الآن
+            </a>
 
+            <a
+              href="#products"
+              class="btn btn-outline"
+              data-ar="اكتشف منتجاتنا"
+              data-en="Discover Our Honey"
+            >
+              اكتشف منتجاتنا
+            </a>
 
-            <p class="hero-description"
-               data-i18n="heroDescription">
+          </div>
 
-                اكتشف تجربة استثنائية مع HOUD HONEY،
-                عسل فاخر مختار بعناية ليمنحك مذاقًا
-                أصيلًا وتجربة لا تُنسى.
+          <div class="hero-features">
 
-            </p>
-
-
-            <div class="hero-actions">
-
-                <a href="#order"
-                   class="btn btn-primary"
-                   data-i18n="orderNow">
-
-                    اطلب الآن
-
-                </a>
-
-
-                <a href="#products"
-                   class="btn btn-outline"
-                   data-i18n="discover">
-
-                    اكتشف منتجاتنا
-
-                </a>
-
+            <div class="feature-item">
+              <span class="feature-icon">🍯</span>
+              <span data-ar="جودة فاخرة"
+                    data-en="Premium Quality">
+                جودة فاخرة
+              </span>
             </div>
 
-
-            <div class="hero-features">
-
-
-                <div class="feature-item">
-
-                    <span class="feature-icon">
-                        🍯
-                    </span>
-
-                    <span data-i18n="pureHoney">
-                        عسل فاخر
-                    </span>
-
-                </div>
-
-
-                <div class="feature-item">
-
-                    <span class="feature-icon">
-                        🇩🇿
-                    </span>
-
-                    <span data-i18n="algerian">
-                        منتج جزائري
-                    </span>
-
-                </div>
-
-
-                <div class="feature-item">
-
-                    <span class="feature-icon">
-                        🚚
-                    </span>
-
-                    <span data-i18n="freeDelivery">
-                        توصيل مجاني
-                    </span>
-
-                </div>
-
+            <div class="feature-item">
+              <span class="feature-icon">🚚</span>
+              <span data-ar="توصيل مجاني"
+                    data-en="Free Delivery">
+                توصيل مجاني
+              </span>
             </div>
+
+            <div class="feature-item">
+              <span class="feature-icon">🇩🇿</span>
+              <span data-ar="كل ولايات الجزائر"
+                    data-en="All Algerian Wilayas">
+                كل ولايات الجزائر
+              </span>
+            </div>
+
+          </div>
 
         </div>
 
 
-        <!-- صورة المنتج -->
-
+        <!-- HERO PRODUCT IMAGE -->
         <div class="hero-visual">
 
-            <div class="hero-circle"></div>
+          <div class="hero-circle"></div>
 
+          <div class="hero-product">
 
-            <div class="honey-particles">
+            <img
+              src="flower-honey.png"
+              alt="HOUD HONEY - عسل هود"
+              class="hero-bottle"
+            >
 
-                <span>✦</span>
-                <span>✧</span>
-                <span>✦</span>
+          </div>
 
-            </div>
+          <div class="floating-card">
 
-
-            <div class="hero-product">
-
-                <img
-                    src="images/houd-honey-all-blossoms.png"
-                    alt="HOUD HONEY - عسل مختلف الأزهار"
-                    class="hero-bottle">
-
-            </div>
-
-
-            <div class="floating-card">
-
-                <span class="floating-icon">
-                    🍯
-                </span>
-
-                <div>
-
-                    <strong>
-                        HOUD HONEY
-                    </strong>
-
-                    <small data-i18n="premiumHoney">
-                        Premium Algerian Honey
-                    </small>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ==================================================
-     TRUST BAR
-================================================== -->
-
-<section class="trust-bar">
-
-    <div class="container trust-grid">
-
-
-        <div class="trust-item">
-
-            <span>✓</span>
+            <span class="floating-icon">🍯</span>
 
             <div>
-
-                <strong data-i18n="trust1Title">
-                    جودة مختارة
-                </strong>
-
-                <small data-i18n="trust1Text">
-                    عناية في كل تفصيل
-                </small>
-
+              <strong>HOUD HONEY</strong>
+              <small
+                data-ar="طبيعي وفاخر"
+                data-en="Natural & Premium"
+              >
+                طبيعي وفاخر
+              </small>
             </div>
+
+          </div>
 
         </div>
 
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         TRUST BAR
+    ========================== -->
+    <section class="trust-bar">
+
+      <div class="container trust-grid">
 
         <div class="trust-item">
-
-            <span>🚚</span>
-
-            <div>
-
-                <strong data-i18n="trust2Title">
-                    توصيل مجاني
-                </strong>
-
-                <small data-i18n="trust2Text">
-                    إلى جميع الولايات الـ69
-                </small>
-
-            </div>
-
+          <span>🍯</span>
+          <strong
+            data-ar="عسل فاخر"
+            data-en="Premium Honey"
+          >
+            عسل فاخر
+          </strong>
+          <small
+            data-ar="اختيار بعناية"
+            data-en="Carefully Selected"
+          >
+            اختيار بعناية
+          </small>
         </div>
-
 
         <div class="trust-item">
-
-            <span>💰</span>
-
-            <div>
-
-                <strong data-i18n="trust3Title">
-                    الدفع عند الاستلام
-                </strong>
-
-                <small data-i18n="trust3Text">
-                    اطلب بكل ثقة
-                </small>
-
-            </div>
-
+          <span>✨</span>
+          <strong
+            data-ar="تجربة مميزة"
+            data-en="Premium Experience"
+          >
+            تجربة مميزة
+          </strong>
+          <small
+            data-ar="جودة نهتم بها"
+            data-en="Quality We Care About"
+          >
+            جودة نهتم بها
+          </small>
         </div>
-
 
         <div class="trust-item">
-
-            <span>📦</span>
-
-            <div>
-
-                <strong data-i18n="trust4Title">
-                    تغليف آمن
-                </strong>
-
-                <small data-i18n="trust4Text">
-                    يصل إليك بعناية
-                </small>
-
-            </div>
-
+          <span>🚚</span>
+          <strong
+            data-ar="توصيل مجاني"
+            data-en="Free Delivery"
+          >
+            توصيل مجاني
+          </strong>
+          <small
+            data-ar="إلى جميع الولايات"
+            data-en="Across Algeria"
+          >
+            إلى جميع الولايات
+          </small>
         </div>
 
-    </div>
+        <div class="trust-item">
+          <span>🇩🇿</span>
+          <strong
+            data-ar="خدمة داخل الجزائر"
+            data-en="Algeria Delivery"
+          >
+            خدمة داخل الجزائر
+          </strong>
+          <small
+            data-ar="69 ولاية"
+            data-en="69 Wilayas"
+          >
+            69 ولاية
+          </small>
+        </div>
 
-</section>
+      </div>
+
+    </section>
 
 
-<!-- ==================================================
-     PRODUCTS
-================================================== -->
+    <!-- =========================
+         PRODUCTS
+    ========================== -->
+    <section class="products-section" id="products">
 
-<section class="products-section" id="products">
-
-    <div class="container">
-
+      <div class="container">
 
         <div class="section-heading">
 
-            <span class="eyebrow"
-                  data-i18n="productsEyebrow">
+          <span class="eyebrow"
+                data-ar="اختيارك الفاخر"
+                data-en="YOUR PREMIUM CHOICE">
+            اختيارك الفاخر
+          </span>
 
-                OUR COLLECTION
+          <h2
+            data-ar="اختر عسل هود الذي يناسب ذوقك"
+            data-en="Choose Your HOUD HONEY">
+            اختر عسل هود الذي يناسب ذوقك
+          </h2>
 
-            </span>
-
-
-            <h2 data-i18n="productsTitle">
-
-                اختر تجربتك
-
-            </h2>
-
-
-            <p data-i18n="productsDescription">
-
-                اكتشف مجموعتنا المختارة من العسل
-                واستمتع بتجربة HOUD HONEY.
-
-            </p>
+          <p
+            data-ar="منتجان مميزان، مذاقان مختلفان، وتجربة واحدة لا تُنسى."
+            data-en="Two premium choices, two unique tastes, one unforgettable experience.">
+            منتجان مميزان، مذاقان مختلفان، وتجربة واحدة لا تُنسى.
+          </p>
 
         </div>
 
 
         <div class="products-grid">
 
+          <!-- FLOWER HONEY -->
+          <article class="product-card featured">
+
+            <div class="product-image-wrap">
 
-            <!-- ======================================
-                 المنتج الأول
-            ======================================= -->
+              <span
+                class="product-badge best"
+                data-ar="الأكثر طلبًا"
+                data-en="BEST SELLER"
+              >
+                الأكثر طلبًا
+              </span>
 
-            <article class="product-card">
+              <img
+                src="flower-honey.png"
+                alt="HOUD HONEY - عسل مختلف الأزهار"
+              >
 
+            </div>
 
-                <div class="product-image-wrap">
+            <div class="product-info">
 
-                    <span class="product-badge"
-                          data-i18n="classic">
+              <span class="product-category">
+                HOUD HONEY
+              </span>
 
-                        CLASSIC
+              <h3
+                data-ar="عسل مختلف الأزهار"
+                data-en="All Blossoms Honey"
+              >
+                عسل مختلف الأزهار
+              </h3>
 
-                    </span>
+              <p
+                data-ar="مزيج غني من عبق الأزهار، بطعم طبيعي متوازن."
+                data-en="A rich blend of floral aromas with a naturally balanced taste."
+              >
+                مزيج غني من عبق الأزهار، بطعم طبيعي متوازن.
+              </p>
 
+              <div class="product-price">
 
-                    <img
-                        src="images/houd-honey-all-blossoms.png"
-                        alt="عسل مختلف الأزهار HOUD HONEY">
+                <span>4500</span>
 
-                </div>
+                <small>دج / 1kg</small>
 
+              </div>
 
-                <div class="product-info">
+              <button
+                type="button"
+                class="select-product"
+                data-product="flower"
+                data-ar="اختر هذا العسل"
+                data-en="Choose This Honey"
+              >
+                اختر هذا العسل
+              </button>
 
-                    <span class="product-category">
+            </div>
 
-                        ALL BLOSSOMS HONEY
+          </article>
 
-                    </span>
 
+          <!-- MOUNTAIN HONEY -->
+          <article class="product-card">
 
-                    <h3 data-i18n="allBlossoms">
+            <div class="product-image-wrap">
 
-                        عسل مختلف الأزهار
+              <span
+                class="product-badge"
+                data-ar="فاخر"
+                data-en="PREMIUM"
+              >
+                فاخر
+              </span>
 
-                    </h3>
+              <img
+                src="mountain-honey.png"
+                alt="HOUD HONEY - عسل الجبلي الفاخر"
+              >
 
+            </div>
 
-                    <p data-i18n="allBlossomsDesc">
+            <div class="product-info">
 
-                        نكهة متوازنة وعطرية مستوحاة
-                        من تنوع الأزهار والطبيعة.
+              <span class="product-category">
+                HOUD HONEY
+              </span>
 
-                    </p>
+              <h3
+                data-ar="عسل الجبلي الفاخر"
+                data-en="Luxury Mountain Honey"
+              >
+                عسل الجبلي الفاخر
+              </h3>
 
+              <p
+                data-ar="مذاق فاخر مستوحى من الطبيعة الجبلية الأصيلة."
+                data-en="A luxurious taste inspired by authentic mountain nature."
+              >
+                مذاق فاخر مستوحى من الطبيعة الجبلية الأصيلة.
+              </p>
 
-                    <div class="product-price">
+              <div class="product-price">
 
-                        <span>
-                            4500
-                        </span>
+                <span>4500</span>
 
-                        <small>
-                            دج / 1 KG
-                        </small>
+                <small>دج / 1kg</small>
 
-                    </div>
+              </div>
 
+              <button
+                type="button"
+                class="select-product"
+                data-product="mountain"
+                data-ar="اختر هذا العسل"
+                data-en="Choose This Honey"
+              >
+                اختر هذا العسل
+              </button>
 
-                    <button
-                        class="select-product"
-                        data-product="all-blossoms"
-                        type="button"
-                        data-i18n="chooseProduct">
+            </div>
 
-                        اختر هذا العسل
-
-                    </button>
-
-                </div>
-
-            </article>
-
-
-            <!-- ======================================
-                 المنتج الثاني
-            ======================================= -->
-
-            <article class="product-card featured">
-
-
-                <div class="product-image-wrap">
-
-                    <span
-                        class="product-badge best"
-                        data-i18n="bestChoice">
-
-                        ⭐ BEST CHOICE
-
-                    </span>
-
-
-                    <img
-                        src="images/houd-honey-mountain.png"
-                        alt="عسل الجبلي الفاخر HOUD HONEY">
-
-                </div>
-
-
-                <div class="product-info">
-
-                    <span class="product-category">
-
-                        PREMIUM MOUNTAIN HONEY
-
-                    </span>
-
-
-                    <h3 data-i18n="mountainHoney">
-
-                        عسل الجبلي الفاخر
-
-                    </h3>
-
-
-                    <p data-i18n="mountainDesc">
-
-                        تجربة غنية بطابع جبلي مميز
-                        لعشاق النكهة الفاخرة.
-
-                    </p>
-
-
-                    <div class="product-price">
-
-                        <span>
-                            4500
-                        </span>
-
-                        <small>
-                            دج / 1 KG
-                        </small>
-
-                    </div>
-
-
-                    <button
-                        class="select-product"
-                        data-product="mountain"
-                        type="button"
-                        data-i18n="chooseProduct">
-
-                        اختر هذا العسل
-
-                    </button>
-
-                </div>
-
-            </article>
+          </article>
 
         </div>
 
-    </div>
+      </div>
 
-</section>
+    </section>
 
 
-<!-- ==================================================
-     WHY HOUD HONEY
-================================================== -->
+    <!-- =========================
+         WHY US
+    ========================== -->
+    <section class="why-section" id="why-us">
 
-<section class="why-section" id="why-us">
-
-    <div class="container">
-
+      <div class="container">
 
         <div class="section-heading">
 
-            <span class="eyebrow">
-                WHY HOUD HONEY
-            </span>
+          <span class="eyebrow"
+                data-ar="لماذا عسل هود؟"
+                data-en="WHY HOUD HONEY?">
+            لماذا عسل هود؟
+          </span>
 
-
-            <h2 data-i18n="whyTitle">
-
-                لأن التفاصيل تصنع الفرق
-
-            </h2>
+          <h2
+            data-ar="لأنك تستحق الأفضل"
+            data-en="Because You Deserve The Best">
+            لأنك تستحق الأفضل
+          </h2>
 
         </div>
 
 
         <div class="why-grid">
 
+          <div class="why-card">
+            <span>01</span>
 
-            <div class="why-card">
+            <h3
+              data-ar="اختيار فاخر"
+              data-en="Premium Selection">
+              اختيار فاخر
+            </h3>
 
-                <span>01</span>
-
-                <h3 data-i18n="why1Title">
-                    اختيار بعناية
-                </h3>
-
-                <p data-i18n="why1Text">
-
-                    نحرص على تقديم تجربة عسل
-                    تليق باسم HOUD HONEY.
-
-                </p>
-
-            </div>
+            <p
+              data-ar="نقدم لك خيارات مختارة لتستمتع بتجربة عسل مميزة."
+              data-en="Carefully selected choices for an exceptional honey experience.">
+              نقدم لك خيارات مختارة لتستمتع بتجربة عسل مميزة.
+            </p>
+          </div>
 
 
-            <div class="why-card">
+          <div class="why-card">
+            <span>02</span>
 
-                <span>02</span>
+            <h3
+              data-ar="عبوة 1 كيلوغرام"
+              data-en="1 KG Jar">
+              عبوة 1 كيلوغرام
+            </h3>
 
-                <h3 data-i18n="why2Title">
-                    تجربة فاخرة
-                </h3>
-
-                <p data-i18n="why2Text">
-
-                    من العبوة إلى آخر ملعقة،
-                    كل التفاصيل مصممة بعناية.
-
-                </p>
-
-            </div>
-
-
-            <div class="why-card">
-
-                <span>03</span>
-
-                <h3 data-i18n="why3Title">
-                    من الطبيعة الجزائرية
-                </h3>
-
-                <p data-i18n="why3Text">
-
-                    هوية مستوحاة من جمال
-                    الطبيعة الجزائرية.
-
-                </p>
-
-            </div>
+            <p
+              data-ar="حجم مثالي للعائلة وللاستمتاع بالعسل لفترة أطول."
+              data-en="A perfect size for families and longer enjoyment.">
+              حجم مثالي للعائلة وللاستمتاع بالعسل لفترة أطول.
+            </p>
+          </div>
 
 
-            <div class="why-card">
+          <div class="why-card">
+            <span>03</span>
 
-                <span>04</span>
+            <h3
+              data-ar="توصيل مجاني"
+              data-en="Free Delivery">
+              توصيل مجاني
+            </h3>
 
-                <h3 data-i18n="why4Title">
-                    يصل إلى بابك
-                </h3>
+            <p
+              data-ar="نوصّل طلبك مجانًا إلى جميع ولايات الجزائر."
+              data-en="Free delivery to all 69 Algerian wilayas.">
+              نوصّل طلبك مجانًا إلى جميع ولايات الجزائر.
+            </p>
+          </div>
 
-                <p data-i18n="why4Text">
 
-                    توصيل مجاني إلى جميع
-                    الولايات الجزائرية الـ69.
+          <div class="why-card">
+            <span>04</span>
 
-                </p>
+            <h3
+              data-ar="اطلب بسهولة"
+              data-en="Easy Ordering">
+              اطلب بسهولة
+            </h3>
 
-            </div>
+            <p
+              data-ar="اختر المنتج والحجم والكمية، ثم أرسل طلبك مباشرة عبر واتساب."
+              data-en="Choose your honey, size and quantity, then order directly via WhatsApp.">
+              اختر المنتج والحجم والكمية، ثم أرسل طلبك مباشرة عبر واتساب.
+            </p>
+          </div>
 
         </div>
 
-    </div>
+      </div>
 
-</section>
+    </section>
 
 
-<!-- ==================================================
-     SPECIAL OFFER
-================================================== -->
+    <!-- =========================
+         SPECIAL OFFER
+    ========================== -->
+    <section class="offer-section">
 
-<section class="offer-section">
-
-    <div class="container">
-
+      <div class="container">
 
         <div class="offer-box">
 
+          <div class="offer-content">
 
-            <div class="offer-content">
+            <span class="offer-label"
+                  data-ar="🔥 عرض خاص"
+                  data-en="🔥 SPECIAL OFFER">
+              🔥 عرض خاص
+            </span>
 
-                <span class="offer-label">
+            <h2
+              data-ar="خذ 3 عبوات واستفد من السعر الخاص"
+              data-en="Get 3 Jars at a Special Price">
+              خذ 3 عبوات واستفد من السعر الخاص
+            </h2>
 
-                    🔥 LIMITED OFFER
+            <p
+              data-ar="عند شراء 3 عبوات 1 كيلوغرام، تحصل على السعر المخفض."
+              data-en="Buy 3 jars of 1 KG and enjoy our special discounted price.">
+              عند شراء 3 عبوات 1 كيلوغرام، تحصل على السعر المخفض.
+            </p>
 
-                </span>
+            <div class="offer-price">
 
+              <del>13500 دج</del>
 
-                <h2 data-i18n="offerTitle">
+              <strong>12000 دج</strong>
 
-                    عرض العائلة
-
-                </h2>
-
-
-                <p data-i18n="offerDescription">
-
-                    3 عبوات من العسل الفاخر،
-                    كل عبوة 1 كغ.
-
-                </p>
-
-
-                <div class="offer-price">
-
-                    <del>
-                        13,500 دج
-                    </del>
-
-
-                    <strong>
-                        12,000 دج
-                    </strong>
-
-
-                    <span data-i18n="save">
-
-                        وفر 1,500 دج
-
-                    </span>
-
-                </div>
-
-
-                <a
-                    href="#order"
-                    class="btn btn-primary"
-                    data-i18n="getOffer">
-
-                    أريد العرض الآن
-
-                </a>
+              <span
+                data-ar="وفر 1500 دج"
+                data-en="Save 1500 DZD">
+                وفر 1500 دج
+              </span>
 
             </div>
 
+            <a
+              href="#order"
+              class="btn btn-primary"
+              data-ar="استفد من العرض الآن"
+              data-en="Get This Offer Now"
+            >
+              استفد من العرض الآن
+            </a>
 
-            <div class="offer-visual">
+          </div>
 
-                <img
-                    src="images/houd-honey-all-blossoms.png"
-                    alt="عرض HOUD HONEY">
 
-            </div>
+          <div class="offer-visual">
+
+            <img
+              src="flower-honey.png"
+              alt="HOUD HONEY Special Offer"
+            >
+
+          </div>
 
         </div>
 
-    </div>
+      </div>
 
-</section>
+    </section>
 
 
-<!-- ==================================================
-     ORDER SECTION
-================================================== -->
+    <!-- =========================
+         ORDER SECTION
+    ========================== -->
+    <section class="order-section" id="order">
 
-<section class="order-section" id="order">
-
-    <div class="container">
-
+      <div class="container">
 
         <div class="section-heading">
 
-            <span class="eyebrow">
-                ORDER NOW
-            </span>
+          <span class="eyebrow"
+                data-ar="اطلب الآن"
+                data-en="ORDER NOW">
+            اطلب الآن
+          </span>
 
+          <h2
+            data-ar="اجعل عسل هود يصل إلى باب منزلك"
+            data-en="Bring HOUD HONEY To Your Door">
+            اجعل عسل هود يصل إلى باب منزلك
+          </h2>
 
-            <h2 data-i18n="orderTitle">
-
-                أكمل طلبك
-
-            </h2>
-
-
-            <p data-i18n="orderDescription">
-
-                اختر عسلَك، حدّد الكمية،
-                وأرسل طلبك بسهولة عبر WhatsApp.
-
-            </p>
+          <p
+            data-ar="اختر منتجك، حدد الحجم والكمية، وأرسل طلبك بسهولة."
+            data-en="Choose your product, select size and quantity, and place your order easily.">
+            اختر منتجك، حدد الحجم والكمية، وأرسل طلبك بسهولة.
+          </p>
 
         </div>
 
 
         <div class="order-layout">
 
+          <!-- ORDER OPTIONS -->
+          <div class="order-card">
 
-            <!-- ======================================
-                 خيارات الطلب
-            ======================================= -->
+            <div class="step">
 
-            <div class="order-card">
+              <span class="step-number">01</span>
 
+              <div>
 
-                <!-- الخطوة 1 -->
+                <h3
+                  data-ar="اختر نوع العسل"
+                  data-en="Choose Your Honey">
+                  اختر نوع العسل
+                </h3>
 
-                <div class="step">
+                <div class="product-options">
 
-                    <span class="step-number">
-                        01
+                  <label class="option-card">
+
+                    <input
+                      type="radio"
+                      name="product"
+                      value="flower"
+                      checked
+                    >
+
+                    <span
+                      data-ar="عسل مختلف الأزهار — 4500 دج / 1كغ"
+                      data-en="All Blossoms Honey — 4500 DZD / 1 KG">
+                      عسل مختلف الأزهار — 4500 دج / 1كغ
                     </span>
 
-
-                    <div>
-
-                        <h3 data-i18n="step1">
-                            اختر نوع العسل
-                        </h3>
+                  </label>
 
 
-                        <div class="product-options">
+                  <label class="option-card">
 
+                    <input
+                      type="radio"
+                      name="product"
+                      value="mountain"
+                    >
 
-                            <label class="option-card">
-
-                                <input
-                                    type="radio"
-                                    name="product"
-                                    value="all-blossoms"
-                                    checked>
-
-
-                                <span>
-
-                                    🌸
-
-                                    <strong data-i18n="allBlossoms">
-                                        عسل مختلف الأزهار
-                                    </strong>
-
-                                </span>
-
-                            </label>
-
-
-                            <label class="option-card">
-
-                                <input
-                                    type="radio"
-                                    name="product"
-                                    value="mountain">
-
-
-                                <span>
-
-                                    🏔️
-
-                                    <strong data-i18n="mountainHoney">
-                                        عسل الجبلي الفاخر
-                                    </strong>
-
-                                </span>
-
-                            </label>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- الخطوة 2 -->
-
-                <div class="step">
-
-                    <span class="step-number">
-                        02
+                    <span
+                      data-ar="عسل الجبلي الفاخر — 4500 دج / 1كغ"
+                      data-en="Luxury Mountain Honey — 4500 DZD / 1 KG">
+                      عسل الجبلي الفاخر — 4500 دج / 1كغ
                     </span>
 
-
-                    <div>
-
-                        <h3 data-i18n="step2">
-                            اختر حجم العبوة
-                        </h3>
-
-
-                        <div class="size-options">
-
-
-                            <label class="size-option">
-
-                                <input
-                                    type="radio"
-                                    name="size"
-                                    value="0.5"
-                                    checked>
-
-
-                                <span>
-                                    500 G
-                                </span>
-
-
-                                <small>
-                                    2250 دج
-                                </small>
-
-                            </label>
-
-
-                            <label class="size-option">
-
-                                <input
-                                    type="radio"
-                                    name="size"
-                                    value="1">
-
-
-                                <span>
-                                    1 KG
-                                </span>
-
-
-                                <small>
-                                    4500 دج
-                                </small>
-
-                            </label>
-
-                        </div>
-
-                    </div>
+                  </label>
 
                 </div>
 
-
-                <!-- الخطوة 3 -->
-
-                <div class="step">
-
-                    <span class="step-number">
-                        03
-                    </span>
-
-
-                    <div>
-
-                        <h3 data-i18n="step3">
-                            عدد العبوات
-                        </h3>
-
-
-                        <div class="quantity-control">
-
-
-                            <button
-                                type="button"
-                                id="decreaseQuantity">
-
-                                −
-
-                            </button>
-
-
-                            <span id="quantity">
-                                1
-                            </span>
-
-
-                            <button
-                                type="button"
-                                id="increaseQuantity">
-
-                                +
-
-                            </button>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- ملخص الطلب -->
-
-                <div class="order-summary">
-
-
-                    <div>
-
-                        <span data-i18n="subtotal">
-                            المجموع
-                        </span>
-
-
-                        <strong id="subtotal">
-                            2250 دج
-                        </strong>
-
-                    </div>
-
-
-                    <div
-                        id="discountRow"
-                        class="discount-row hidden">
-
-                        <span data-i18n="discount">
-                            التوفير
-                        </span>
-
-
-                        <strong id="discount">
-                            0 دج
-                        </strong>
-
-                    </div>
-
-
-                    <div>
-
-                        <span data-i18n="delivery">
-                            التوصيل
-                        </span>
-
-
-                        <strong class="free">
-                            مجاني
-                        </strong>
-
-                    </div>
-
-
-                    <div class="total-row">
-
-                        <span data-i18n="total">
-                            الإجمالي
-                        </span>
-
-
-                        <strong id="total">
-                            2250 دج
-                        </strong>
-
-                    </div>
-
-                </div>
+              </div>
 
             </div>
 
 
-            <!-- ======================================
-                 بيانات العميل
-            ======================================= -->
+            <div class="step">
 
-            <div class="order-card customer-card">
+              <span class="step-number">02</span>
 
+              <div>
 
-                <div class="step">
+                <h3
+                  data-ar="اختر الحجم"
+                  data-en="Choose Size">
+                  اختر الحجم
+                </h3>
 
-                    <span class="step-number">
-                        04
+                <div class="size-options">
+
+                  <label class="size-option">
+
+                    <input
+                      type="radio"
+                      name="size"
+                      value="1kg"
+                      checked
+                    >
+
+                    <span
+                      data-ar="1 كيلوغرام — 4500 دج"
+                      data-en="1 KG — 4500 DZD">
+                      1 كيلوغرام — 4500 دج
                     </span>
 
-
-                    <div>
-
-                        <h3 data-i18n="step4">
-                            بيانات التوصيل
-                        </h3>
+                  </label>
 
 
-                        <p
-                            class="form-note"
-                            data-i18n="formNote">
+                  <label class="size-option">
 
-                            أدخل بياناتك لإتمام الطلب.
+                    <input
+                      type="radio"
+                      name="size"
+                      value="500g"
+                    >
 
-                        </p>
+                    <span
+                      data-ar="500 غرام — 2250 دج"
+                      data-en="500 G — 2250 DZD">
+                      500 غرام — 2250 دج
+                    </span>
 
-                    </div>
+                  </label>
 
                 </div>
 
-
-                <form id="orderForm" novalidate>
-
-
-                    <!-- الاسم -->
-
-                    <div class="form-group">
-
-                        <label
-                            for="fullName"
-                            data-i18n="fullName">
-
-                            الاسم الكامل
-
-                        </label>
-
-
-                        <input
-                            type="text"
-                            id="fullName"
-                            autocomplete="name"
-                            required>
-
-                    </div>
-
-
-                    <!-- الهاتف -->
-
-                    <div class="form-group">
-
-                        <label
-                            for="phone"
-                            data-i18n="phone">
-
-                            رقم الهاتف
-
-                        </label>
-
-
-                        <input
-                            type="tel"
-                            id="phone"
-                            placeholder="0663561135"
-                            autocomplete="tel"
-                            required>
-
-                    </div>
-
-
-                    <!-- الولاية -->
-
-                    <div class="form-group">
-
-                        <label
-                            for="wilaya"
-                            data-i18n="wilaya">
-
-                            الولاية
-
-                        </label>
-
-
-                        <select
-                            id="wilaya"
-                            required>
-
-                            <option
-                                value=""
-                                data-i18n="chooseWilaya">
-
-                                اختر ولايتك
-
-                            </option>
-
-                        </select>
-
-                    </div>
-
-
-                    <!-- العنوان -->
-
-                    <div class="form-group">
-
-                        <label
-                            for="address"
-                            data-i18n="address">
-
-                            العنوان الكامل
-
-                        </label>
-
-
-                        <textarea
-                            id="address"
-                            rows="3"
-                            required></textarea>
-
-                    </div>
-
-
-                    <!-- التوصيل المجاني -->
-
-                    <div class="free-delivery-message">
-
-                        🚚
-
-                        <span data-i18n="freeDeliveryFull">
-
-                            التوصيل مجاني إلى جميع الولايات الـ69
-
-                        </span>
-
-                    </div>
-
-
-                    <!-- زر WhatsApp -->
-
-                    <button
-                        type="submit"
-                        class="btn btn-whatsapp">
-
-                        <span>
-                            💬
-                        </span>
-
-
-                        <span data-i18n="confirmOrder">
-
-                            تأكيد الطلب عبر WhatsApp
-
-                        </span>
-
-                    </button>
-
-
-                    <p
-                        class="secure-note"
-                        data-i18n="secureNote">
-
-                        سيتم تجهيز طلبك وإرساله مباشرة
-                        عبر WhatsApp لتأكيده.
-
-                    </p>
-
-                </form>
+              </div>
 
             </div>
+
+
+            <div class="step">
+
+              <span class="step-number">03</span>
+
+              <div>
+
+                <h3
+                  data-ar="عدد العبوات"
+                  data-en="Quantity">
+                  عدد العبوات
+                </h3>
+
+                <div class="quantity-control">
+
+                  <button
+                    type="button"
+                    id="decreaseQuantity"
+                    aria-label="Decrease quantity"
+                  >
+                    −
+                  </button>
+
+                  <span id="quantityDisplay">1</span>
+
+                  <button
+                    type="button"
+                    id="increaseQuantity"
+                    aria-label="Increase quantity"
+                  >
+                    +
+                  </button>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="order-summary">
+
+              <div>
+                <span
+                  data-ar="المنتج"
+                  data-en="Product">
+                  المنتج
+                </span>
+
+                <span id="summaryProduct">
+                  عسل مختلف الأزهار
+                </span>
+              </div>
+
+
+              <div>
+                <span
+                  data-ar="الحجم"
+                  data-en="Size">
+                  الحجم
+                </span>
+
+                <span id="summarySize">
+                  1 كغ
+                </span>
+              </div>
+
+
+              <div>
+                <span
+                  data-ar="الكمية"
+                  data-en="Quantity">
+                  الكمية
+                </span>
+
+                <span id="summaryQuantity">
+                  1
+                </span>
+              </div>
+
+
+              <div>
+                <span
+                  data-ar="التوصيل"
+                  data-en="Delivery">
+                  التوصيل
+                </span>
+
+                <span class="free"
+                      data-ar="مجاني"
+                      data-en="FREE">
+                  مجاني
+                </span>
+              </div>
+
+
+              <div class="total-row">
+
+                <span
+                  data-ar="المجموع"
+                  data-en="Total">
+                  المجموع
+                </span>
+
+                <span id="totalPrice">
+                  4500 دج
+                </span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- CUSTOMER FORM -->
+          <div class="order-card customer-card">
+
+            <div class="step">
+
+              <span class="step-number">04</span>
+
+              <div>
+
+                <h3
+                  data-ar="معلومات التوصيل"
+                  data-en="Delivery Information">
+                  معلومات التوصيل
+                </h3>
+
+                <p class="form-note"
+                   data-ar="أدخل معلوماتك لإرسال الطلب عبر واتساب."
+                   data-en="Enter your details to send your order via WhatsApp.">
+                  أدخل معلوماتك لإرسال الطلب عبر واتساب.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <form id="orderForm">
+
+              <div class="form-group">
+
+                <label for="customerName"
+                       data-ar="الاسم الكامل"
+                       data-en="Full Name">
+                  الاسم الكامل
+                </label>
+
+                <input
+                  type="text"
+                  id="customerName"
+                  name="customerName"
+                  placeholder="اكتب اسمك الكامل"
+                  required
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="wilaya"
+                       data-ar="الولاية"
+                       data-en="Wilaya">
+                  الولاية
+                </label>
+
+                <select
+                  id="wilaya"
+                  name="wilaya"
+                  required
+                >
+
+                  <option value=""
+                          data-ar="اختر ولايتك"
+                          data-en="Select your wilaya">
+                    اختر ولايتك
+                  </option>
+
+                  <option>أدرار</option>
+                  <option>الشلف</option>
+                  <option>الأغواط</option>
+                  <option>أم البواقي</option>
+                  <option>باتنة</option>
+                  <option>بجاية</option>
+                  <option>بسكرة</option>
+                  <option>بشار</option>
+                  <option>البليدة</option>
+                  <option>البويرة</option>
+                  <option>تمنراست</option>
+                  <option>تبسة</option>
+                  <option>تلمسان</option>
+                  <option>تيارت</option>
+                  <option>تيزي وزو</option>
+                  <option>الجزائر</option>
+                  <option>الجلفة</option>
+                  <option>جيجل</option>
+                  <option>سطيف</option>
+                  <option>سعيدة</option>
+                  <option>سكيكدة</option>
+                  <option>سيدي بلعباس</option>
+                  <option>عنابة</option>
+                  <option>قالمة</option>
+                  <option>قسنطينة</option>
+                  <option>المدية</option>
+                  <option>مستغانم</option>
+                  <option>المسيلة</option>
+                  <option>معسكر</option>
+                  <option>ورقلة</option>
+                  <option>وهران</option>
+                  <option>البيض</option>
+                  <option>إليزي</option>
+                  <option>برج بوعريريج</option>
+                  <option>بومرداس</option>
+                  <option>الطارف</option>
+                  <option>تندوف</option>
+                  <option>تسمسيلت</option>
+                  <option>الوادي</option>
+                  <option>خنشلة</option>
+                  <option>سوق أهراس</option>
+                  <option>تيبازة</option>
+                  <option>ميلة</option>
+                  <option>عين الدفلى</option>
+                  <option>النعامة</option>
+                  <option>عين تموشنت</option>
+                  <option>غرداية</option>
+                  <option>غليزان</option>
+                  <option>تيميمون</option>
+                  <option>برج باجي مختار</option>
+                  <option>أولاد جلال</option>
+                  <option>بني عباس</option>
+                  <option>إن صالح</option>
+                  <option>إن قزام</option>
+                  <option>تقرت</option>
+                  <option>جانت</option>
+                  <option>المغير</option>
+                  <option>المنيعة</option>
+                  <option>آفلو</option>
+                  <option>بريكة</option>
+                  <option>القنطرة</option>
+                  <option>بئر العاتر</option>
+                  <option>قصر البخاري</option>
+                  <option>قصر الشلالة</option>
+                  <option>عين وسارة</option>
+                  <option>مسعد</option>
+                  <option>الأبيض سيدي الشيخ</option>
+                  <option>البرواقية</option>
+
+                </select>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="customerAddress"
+                       data-ar="العنوان الكامل"
+                       data-en="Full Address">
+                  العنوان الكامل
+                </label>
+
+                <textarea
+                  id="customerAddress"
+                  name="customerAddress"
+                  rows="3"
+                  placeholder="اكتب عنوان التوصيل بالتفصيل"
+                  required
+                ></textarea>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="customerPhone"
+                       data-ar="رقم الهاتف"
+                       data-en="Phone Number">
+                  رقم الهاتف
+                </label>
+
+                <input
+                  type="tel"
+                  id="customerPhone"
+                  name="customerPhone"
+                  placeholder="06 XX XX XX XX"
+                  inputmode="tel"
+                  required
+                >
+
+              </div>
+
+
+              <div class="free-delivery-message">
+
+                🚚
+
+                <span
+                  data-ar="التوصيل مجاني إلى جميع ولايات الجزائر"
+                  data-en="Free delivery to all Algerian wilayas">
+                  التوصيل مجاني إلى جميع ولايات الجزائر
+                </span>
+
+              </div>
+
+
+              <button
+                type="submit"
+                class="btn btn-whatsapp"
+              >
+                <span>📱</span>
+
+                <span
+                  data-ar="إرسال الطلب عبر واتساب"
+                  data-en="Send Order via WhatsApp">
+                  إرسال الطلب عبر واتساب
+                </span>
+
+              </button>
+
+              <p class="secure-note"
+                 data-ar="سيتم فتح واتساب لتأكيد تفاصيل طلبك."
+                 data-en="WhatsApp will open to confirm your order details.">
+                سيتم فتح واتساب لتأكيد تفاصيل طلبك.
+              </p>
+
+            </form>
+
+          </div>
 
         </div>
 
-    </div>
+      </div>
 
-</section>
+    </section>
 
 
-<!-- ==================================================
-     FINAL CTA
-================================================== -->
+    <!-- =========================
+         FINAL CTA
+    ========================== -->
+    <section class="final-cta">
 
-<section class="final-cta">
-
-    <div class="container">
-
+      <div class="container">
 
         <div class="final-cta-content">
 
+          <span>HOUD HONEY</span>
 
-            <span>
-                HOUD HONEY
-            </span>
+          <h2
+            data-ar="لحظة حلوة تستحق أن تعيشها"
+            data-en="A Sweet Moment Worth Living">
+            لحظة حلوة تستحق أن تعيشها
+          </h2>
 
+          <p
+            data-ar="اختر عبوتك الآن واستمتع بتجربة عسل هود الفاخرة."
+            data-en="Choose your jar now and enjoy the premium HOUD HONEY experience.">
+            اختر عبوتك الآن واستمتع بتجربة عسل هود الفاخرة.
+          </p>
 
-            <h2 data-i18n="finalTitle">
-
-                هل أنت مستعد لتجربة العسل الفاخر؟
-
-            </h2>
-
-
-            <p data-i18n="finalDescription">
-
-                اختر عسلَك الآن واستمتع بتجربة
-                من الطبيعة الجزائرية إلى باب منزلك.
-
-            </p>
-
-
-            <a
-                href="#order"
-                class="btn btn-primary"
-                data-i18n="orderNow">
-
-                اطلب الآن
-
-            </a>
+          <a
+            href="#order"
+            class="btn btn-primary"
+            data-ar="اطلب الآن"
+            data-en="Order Now"
+          >
+            اطلب الآن
+          </a>
 
         </div>
 
-    </div>
+      </div>
 
-</section>
+    </section>
 
-</main>
+  </main>
 
 
-<!-- ==================================================
-     FOOTER
-================================================== -->
+  <!-- =========================
+       FOOTER
+  ========================== -->
+  <footer class="site-footer">
 
-<footer class="site-footer">
+    <div class="container">
 
-    <div class="container footer-inner">
-
+      <div class="footer-inner">
 
         <div>
 
-            <div class="footer-logo">
-                HOUD HONEY
-            </div>
+          <div class="footer-logo">
+            HOUD HONEY
+          </div>
 
-
-            <p data-i18n="footerText">
-
-                تجربة عسل فاخرة من الطبيعة الجزائرية.
-
-            </p>
+          <p
+            data-ar="عسل هود الفاخر"
+            data-en="Premium HOUD HONEY">
+            عسل هود الفاخر
+          </p>
 
         </div>
 
 
         <div class="footer-delivery">
 
-            🚚
+          🚚
 
-            <span data-i18n="freeDelivery">
-
-                توصيل مجاني
-
-            </span>
-
-
-            <small data-i18n="allWilayas">
-
-                إلى جميع الولايات الـ69
-
-            </small>
+          <strong
+            data-ar="التوصيل مجاني إلى جميع ولايات الجزائر"
+            data-en="Free Delivery Across Algeria">
+            التوصيل مجاني إلى جميع ولايات الجزائر
+          </strong>
 
         </div>
 
+      </div>
+
+
+      <div class="copyright">
+
+        © <span id="currentYear"></span> HOUD HONEY.
+        <span
+          data-ar="جميع الحقوق محفوظة."
+          data-en="All rights reserved.">
+          جميع الحقوق محفوظة.
+        </span>
+
+      </div>
+
     </div>
 
-
-    <div class="copyright">
-
-        ©
-
-        <span id="currentYear"></span>
-
-        HOUD HONEY
-
-    </div>
-
-</footer>
+  </footer>
 
 
-<!-- ==================================================
-     FLOATING WHATSAPP
-================================================== -->
-
-<a
+  <!-- =========================
+       FLOATING WHATSAPP
+  ========================== -->
+  <a
     href="https://wa.me/213663561135"
     class="whatsapp-float"
     target="_blank"
     rel="noopener noreferrer"
-    aria-label="WhatsApp">
-
+    aria-label="WhatsApp"
+  >
     💬
+  </a>
 
-</a>
 
-
-<!-- ==================================================
-     JAVASCRIPT
-================================================== -->
-
-<script src="app.js" defer></script>
+  <!-- Main JavaScript -->
+  <script src="app.js"></script>
 
 </body>
 </html>
