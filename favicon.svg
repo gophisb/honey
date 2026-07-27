@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f3d27c"/>
+      <stop offset="50%" stop-color="#d4a853"/>
+      <stop offset="100%" stop-color="#b68b30"/>
+    </linearGradient>
+
+    <radialGradient id="bg" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#1a1a1a"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" rx="110" fill="url(#bg)"/>
+
+  <!-- Golden Circle -->
+  <circle
+    cx="256"
+    cy="256"
+    r="190"
+    fill="none"
+    stroke="url(#gold)"
+    stroke-width="10"
+  />
+
+  <!-- Honey Drop -->
+  <path
+    d="M256 105
+       C256 105 165 220 165 292
+       C165 353 205 397 256 397
+       C307 397 347 353 347 292
+       C347 220 256 105 256 105Z"
+    fill="url(#gold)"
+  />
+
+  <!-- Honey Highlight -->
+  <path
+    d="M224 205
+       C205 235 194 261 194 285
+       C194 312 207 330 226 337"
+    fill="none"
+    stroke="#fff"
+    stroke-width="12"
+    stroke-linecap="round"
+    opacity="0.35"
+  />
+
+  <!-- HOUD -->
+  <text
+    x="256"
+    y="455"
+    text-anchor="middle"
+    font-family="Arial, sans-serif"
+    font-size="48"
+    font-weight="bold"
+    letter-spacing="8"
+    fill="url(#gold)"
+  >
+    HOUD
+  </text>
+</svg>
